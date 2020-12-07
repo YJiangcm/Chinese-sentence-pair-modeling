@@ -1,9 +1,69 @@
 # Chinese-sentence-pair-modeling
 
 This repository contains the following models for sentence pair modeling: **BiLSTM (max-pooling), BiGRU (element-wise product), BiLSTM (self-attention), ABCNN, RE2, ESIM, BiMPM, Siamese BERT, BERT, RoBERTa, XLNet, DistilBERT and ALBERT.** All the codes are based on PyTorch and you are recommended to run them in Google Colab.
-
-I conduct sentence pair modeling experiments on 5 Chinese datasets: 3 paraphrase identification datasets and 2 natural language inference datasets.Table below gives a brief comparison of these datasets.
+### 1. Datasets
+I conduct experiments on 5 Chinese datasets: 3 paraphrase identification datasets and 2 natural language inference datasets.Tables below give a brief comparison of these datasets.
 
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/datasets.PNG" width="600" height="450">
 
+Note*: the BQ Corpus dataset requires you to send an application form, which can be downloaded from http://icrc.hitsz.edu.cn/Article/show/175.html .
+The CMNLI dataset is too large, and you can download it from https://storage.googleapis.com/cluebenchmark/tasks/cmnli_public.zip . Due to the unbalanced categories (labels of 1, 2, 3, 4 account for a smallpercentage) of ChineseSTS, I drop these few labels and converts the dataset into an binary classification task. What's more, OCNLI and CMNLI datasets are preprocessed by removing the data with missing labels.
 
+### 2. Implementation Details
+After analyzing the distributions of lengths of sentences in 5 datasets, the max\_sequence\_length for truncation is set to 64 for convenient comparisons. What's more, the hidden size is set to 200 in all models using BiLSTM.
+
+For models of BiLSTM (max-pooling), BiGRU (element-wise product), BiLSTM (self-attention), ABCNN, RE2, ESIM and BiMPM, I apply character embedding and word embedding respectively while tokenizing sentences into tokens.  The pre-trained character embedding matrix contains 300-dimensional character vectors trained on Wikipedia\_zh corpus (please download it from https://github.com/liuhuanyong/ChineseEmbedding/blob/master/model/token_vec_300.bin), while the word embedding matrix is composed of 300-dimensional word vectors trained on Baidu Encyclopedia (please download it from https://pan.baidu.com/s/1Rn7LtTH0n7SHyHPfjRHbkg). 
+
+As for Siamese BERT, BERT, BERT-wwm, RoBERTa, XLNet DistilBERT and ALBERT, learning rate is the most important hyperparameter (inappropriate choice may lead to divergence of models), which is generally chosen from 1e-5 to 1e-4. What's more, it should also be determined by the batchsize. A large batchsize should correspond to a large learning rate.
+
+### 3. Experiment results and analysis
+
+The following table shows the test accuracy (%) of different models on 5 datasets:
+
+
+|          Model          | LCQMC | ChineseSTS | BQ Corpus | OCNLI | CMNLI |
+|:-----------------------:|:-----:|:----------:|:---------:|:-----:|:-----:|
+|  BiLSTM (Max)-char-pre  |  74.4 |    97.5    |    70.0   |  60.6 |  56.7 |
+|  BiLSTM (Max)-word-pre  |  75.2 |    98.0    |    68.0   |  58.0 |  56.9 |
+| BiLSTM (Atten)-char-pre |  85.0 |    96.8    |    79.8   |  58.5 |  63.6 |
+| BiLSTM (Atten)-word-pre |  83.7 |    94.4    |    79.3   |  57.8 |  64.2 |
+|      ABCNN-char-pre     |  79.5 |    97.2    |    78.8   |  53.2 |  63.2 |
+|      ABCNN-word-pre     |  81.3 |    97.9    |    74.4   |  54.1 |  59.8 |
+|       RE2-char-pre      |  84.2 |    98.7    |    80.4   |  61.0 |  68.6 |
+|       RE2-word-pre      |  84.5 |    98.6    |    80.1   |  57.2 |  65.1 |
+|      ESIM-char-pre      |  83.6 |    99.0    |    81.2   |  64.8 |  74.0 |
+|      ESIM-word-pre      |   84  |    98.9    |    81.7   |  61.3 |  72.6 |
+|      BiMPM-char-pre     |  83.6 |    98.9    |    79.2   |  63.9 |  69.7 |
+|      BiMPM-word-pre     |  83.7 |    98.8    |    80.3   |  59.9 |  69.6 |
+|       Siamese BERT      |  84.8 |    97.7    |    83.5   |  66.8 |  72.5 |
+|           BERT          |  **87.8** |    98.9    |    84.2   |  73.8 |  80.5 |
+|         BERT-wwm        |  87.4 |    99.2    |    84.5   |  73.8 |  80.6 |
+|         RoBERTa         |  87.5 |    99.2    |    **84.6**   |  **75.5** |  80.6 |
+|          XLNet          |  87.4 |    99.1    |    84.1   |  73.6 |  **80.7** |
+|          ALBERT         |  87.4 |    **99.5**    |    82.2   |  68.1 |  74.8 |
+
+#### 3.1 Char Embedding vs. Word Embedding
+<img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/char_vs_word.png" width="600" height="450">
+
+Note that the y_axis is the averaged accuracy on five different test sets. We can see that using method of char embedding gets greater performance than that of word embedding. It may be because that the word embedding matrix is much more sparse than char embedding matrix, so large quantities of weights of word vectors do not get updated during training. Besides, the out-of-vocabulary problem is more easily to happen in word embedding, which also weakens its performance. 
+
+#### 3.2 Comparison of average test accuracy on five datasets
+<img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/accuracy.png" width="600" height="450">
+Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attention), ABCNN, RE2, ESIM and BiMPM, and the accuracy is computed by taking average on five datasets, just as Figure \ref{fig9} shows. We can see that RoBERTa model gets the best performance among these models, and BERT-wwm is slightly better than BERT.
+
+#### 3.3 Comprehensive Evaluation of the Models
+
+|          Model          | Accuracy (%) | Number of parameters (millions) | Average training time  (seconds / sentence pair)  | Average inference time  (seconds / sentence pair) |
+|:-----------------------:|:------------:|:-------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|
+|   BiLSTM (max-pooling)  |     71.8     |                16               |                      7.4E-04                      |                      1.6E-04                      |
+| BiLSTM (self-attention) |     76.7     |                16               |                      7.5E-04                      |                      1.7E-04                      |
+|       Siamese BERT      |     81.1     |               102               |                      1.5E-02                      |                      3.9E-03                      |
+|          ABCNN          |     74.4     |                13               |                      **4.8E-04**                      |                      1.3E-04                      |
+|           RE2           |     78.6     |                16               |                      8.1E-04                      |                      2.1E-04                      |
+|           ESIM          |     80.5     |                17               |                      5.5E-04                      |                      **1.2E-04**                      |
+|          BiMPM          |     79.1     |                13               |                      2.0E-03                      |                      9.1E-04                      |
+|           BERT          |     85.0     |               102               |                      6.7E-03                      |                      2.1E-03                      |
+|         BERT-wwm        |     85.1     |               102               |                      6.8E-03                      |                      2.1E-03                      |
+|         RoBERTa         |     **85.5**     |               102               |                      1.1E-02                      |                      3.7E-03                      |
+|          XLNet          |     85.0     |               117               |                      9.5E-03                      |                      3.6E-03                      |
+|          ALBERT         |     82.4     |                **12**               |                      1.1E-02                      |                      3.7E-03                      |
