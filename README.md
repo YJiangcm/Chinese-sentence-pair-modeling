@@ -68,3 +68,7 @@ Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attent
 |         RoBERTa         |     **85.5**     |               102               |                      1.1E-02                      |                      3.7E-03                      |
 |          XLNet          |     85.0     |               117               |                      9.5E-03                      |                      3.6E-03                      |
 |          ALBERT         |     82.4     |                **12**               |                      1.1E-02                      |                      3.7E-03                      |
+
+
+## LICENSE
+Please refer to [MIT License Copyright (c) 2020 YJiangcm](https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/LICENSE)
