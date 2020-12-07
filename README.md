@@ -2,7 +2,7 @@
 
 This repository contains the following models for sentence pair modeling: **BiLSTM (max-pooling), BiGRU (element-wise product), BiLSTM (self-attention), ABCNN, RE2, ESIM, BiMPM, Siamese BERT, BERT, RoBERTa, XLNet, DistilBERT and ALBERT.** All these codes are based on PyTorch and you are recommended to run the "ipynb" files in Google Colab, where you could get GPU resources for free.
 
-### 1. Datasets
+## 1. Datasets
 I conduct experiments on 5 Chinese datasets: 3 paraphrase identification datasets and 2 natural language inference datasets. Tables below give a brief comparison of these datasets.
 
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/datasets.PNG" width="600" height="450">
@@ -10,14 +10,14 @@ I conduct experiments on 5 Chinese datasets: 3 paraphrase identification dataset
 **Note**: the BQ Corpus dataset requires you to send an application form, which can be downloaded from http://icrc.hitsz.edu.cn/Article/show/175.html .
 The CMNLI dataset is too large, and you can download it from https://storage.googleapis.com/cluebenchmark/tasks/cmnli_public.zip . Due to the unbalanced categories (labels of 1, 2, 3, 4 account for a smallpercentage) of ChineseSTS, I drop these few labels and converts the dataset into an binary classification task. What's more, OCNLI and CMNLI datasets are preprocessed by removing the data with missing labels.
 
-### 2. Implementation Details
+## 2. Implementation Details
 After analyzing the distributions of lengths of sentences in 5 datasets, the max\_sequence\_length for truncation is set to 64 for convenient comparisons. What's more, the hidden size is set to 200 in all models using BiLSTM.
 
 For models of BiLSTM (max-pooling), BiGRU (element-wise product), BiLSTM (self-attention), ABCNN, RE2, ESIM and BiMPM, I apply character embedding and word embedding respectively while tokenizing sentences into tokens.  The pre-trained character embedding matrix contains 300-dimensional character vectors trained on Wikipedia\_zh corpus (please download it from https://github.com/liuhuanyong/ChineseEmbedding/blob/master/model/token_vec_300.bin), while the word embedding matrix is composed of 300-dimensional word vectors trained on Baidu Encyclopedia (please download it from https://pan.baidu.com/s/1Rn7LtTH0n7SHyHPfjRHbkg). 
 
 As for Siamese BERT, BERT, BERT-wwm, RoBERTa, XLNet DistilBERT and ALBERT, learning rate is the most important hyperparameter (inappropriate choice may lead to divergence of models), which is generally chosen from 1e-5 to 1e-4. What's more, it should also be determined by the batchsize. A large batchsize should correspond to a large learning rate.
 
-### 3. Experiment results and analysis
+## 3. Experiment results and analysis
 
 The following table shows the test accuracy (%) of different models on 5 datasets:
 
@@ -43,16 +43,16 @@ The following table shows the test accuracy (%) of different models on 5 dataset
 |          XLNet          |  87.4 |    99.1    |    84.1   |  73.6 |  **80.7** |
 |          ALBERT         |  87.4 |    **99.5**    |    82.2   |  68.1 |  74.8 |
 
-#### 3.1 Char Embedding vs. Word Embedding
+### 3.1 Char Embedding vs. Word Embedding
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/char_vs_word.png" width="600" height="450">
 
 Note that the y_axis is the averaged accuracy on 5 different test sets. We can see that using method of char embedding gets greater performance than that of word embedding. It may be because that the word embedding matrix is much more sparse than char embedding matrix, so large quantities of weights of word vectors do not get updated during training. Besides, the out-of-vocabulary problem is more easily to happen in word embedding, which also weakens its performance. 
 
-#### 3.2 Comparison of Average Test Accuracy on 5 Datasets
+### 3.2 Comparison of Average Test Accuracy on 5 Datasets
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/accuracy.png" width="600" height="450">
 Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attention), ABCNN, RE2, ESIM and BiMPM, and the accuracy is computed by taking average on 5 datasets. We can see that RoBERTa model gets the best performance among these models, and BERT-wwm is slightly better than BERT.
 
-#### 3.3 Comprehensive Evaluation of the Models
+### 3.3 Comprehensive Evaluation of the Models
 
 |          Model          | Accuracy\(%) | Number of parameters  (millions) | Average training time  (seconds / sentence pair)  | Average inference time  (seconds / sentence pair) |
 |:-----------------------:|:------------:|:-------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|
