@@ -1,12 +1,13 @@
 # Chinese-sentence-pair-modeling
 
-This repository contains the following models for sentence pair modeling: **BiLSTM (max-pooling), BiGRU (element-wise product), BiLSTM (self-attention), ABCNN, RE2, ESIM, BiMPM, Siamese BERT, BERT, RoBERTa, XLNet, DistilBERT and ALBERT.** All the codes are based on PyTorch and you are recommended to run them in Google Colab.
+This repository contains the following models for sentence pair modeling: **BiLSTM (max-pooling), BiGRU (element-wise product), BiLSTM (self-attention), ABCNN, RE2, ESIM, BiMPM, Siamese BERT, BERT, RoBERTa, XLNet, DistilBERT and ALBERT.** All these codes are based on PyTorch and you are recommended to run the "ipynb" files in Google Colab, where you could get GPU resources for free.
+
 ### 1. Datasets
-I conduct experiments on 5 Chinese datasets: 3 paraphrase identification datasets and 2 natural language inference datasets.Tables below give a brief comparison of these datasets.
+I conduct experiments on 5 Chinese datasets: 3 paraphrase identification datasets and 2 natural language inference datasets. Tables below give a brief comparison of these datasets.
 
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/datasets.PNG" width="600" height="450">
 
-Note*: the BQ Corpus dataset requires you to send an application form, which can be downloaded from http://icrc.hitsz.edu.cn/Article/show/175.html .
+**Note**: the BQ Corpus dataset requires you to send an application form, which can be downloaded from http://icrc.hitsz.edu.cn/Article/show/175.html .
 The CMNLI dataset is too large, and you can download it from https://storage.googleapis.com/cluebenchmark/tasks/cmnli_public.zip . Due to the unbalanced categories (labels of 1, 2, 3, 4 account for a smallpercentage) of ChineseSTS, I drop these few labels and converts the dataset into an binary classification task. What's more, OCNLI and CMNLI datasets are preprocessed by removing the data with missing labels.
 
 ### 2. Implementation Details
@@ -45,11 +46,11 @@ The following table shows the test accuracy (%) of different models on 5 dataset
 #### 3.1 Char Embedding vs. Word Embedding
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/char_vs_word.png" width="600" height="450">
 
-Note that the y_axis is the averaged accuracy on five different test sets. We can see that using method of char embedding gets greater performance than that of word embedding. It may be because that the word embedding matrix is much more sparse than char embedding matrix, so large quantities of weights of word vectors do not get updated during training. Besides, the out-of-vocabulary problem is more easily to happen in word embedding, which also weakens its performance. 
+Note that the y_axis is the averaged accuracy on 5 different test sets. We can see that using method of char embedding gets greater performance than that of word embedding. It may be because that the word embedding matrix is much more sparse than char embedding matrix, so large quantities of weights of word vectors do not get updated during training. Besides, the out-of-vocabulary problem is more easily to happen in word embedding, which also weakens its performance. 
 
-#### 3.2 Comparison of average test accuracy on five datasets
+#### 3.2 Comparison of Average Test Accuracy on 5 Datasets
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/accuracy.png" width="600" height="450">
-Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attention), ABCNN, RE2, ESIM and BiMPM, and the accuracy is computed by taking average on five datasets, just as Figure \ref{fig9} shows. We can see that RoBERTa model gets the best performance among these models, and BERT-wwm is slightly better than BERT.
+Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attention), ABCNN, RE2, ESIM and BiMPM, and the accuracy is computed by taking average on 5 datasets. We can see that RoBERTa model gets the best performance among these models, and BERT-wwm is slightly better than BERT.
 
 #### 3.3 Comprehensive Evaluation of the Models
 
