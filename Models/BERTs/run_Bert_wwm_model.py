@@ -177,10 +177,11 @@ def model_load_test(test_df, target_dir, test_prediction_dir, test_prediction_na
         os.makedirs(test_prediction_dir)
     test_prediction.to_csv(os.path.join(test_prediction_dir,test_prediction_name), index=False)
 
+
 if __name__ == "__main__":
-    target_dir = "/content/drive/My Drive/LCQMC/output_little/Bert/"
-    test_prediction_dir = '/content/drive/My Drive/LCQMC/output_little/Bert/'
-    # test_prediction_dir = '/content/drive/My Drive/LCQMC/output/XiAn_test/Bert_test_prediction.csv'
-    # test_df = pd.read_csv("/content/drive/My Drive/XiAn_STS/data/test_all.tsv",sep='\t',header=None, names=['s1','s2','similarity'])
-    model_train_validate_test(train_df, dev_df, test_df, target_dir)
+    lcqmc_path = "/content/drive/My Drive/Sentence_pair_modeling/LCQMC/"
+    train_df = pd.read_csv(os.path.join(lcqmc_path, "data/train.tsv"),sep='\t',header=None, names=['s1','s2','label'])
+    dev_df = pd.read_csv(os.path.join(lcqmc_path, "data/dev.tsv"),sep='\t',header=None, names=['s1','s2','label'])
+    test_df = pd.read_csv(os.path.join(lcqmc_path, "data/test.tsv"),sep='\t',header=None, names=['s1','s2','label'])
+    target_dir = os.path.join(lcqmc_path, "output/Bert_wwm/")
     model_load_test(test_df, target_dir, test_prediction_dir)

@@ -14,6 +14,9 @@ import jsonlines
 import pandas as pd
 
 def json2df(path):
+    """
+    convert json to dataframe
+    """
     s1=[]
     s2=[]
     label=[]
@@ -27,6 +30,9 @@ def json2df(path):
    
     
 def Metric(y_true, y_pred):
+    """
+    print the classification report
+    """
     accuracy = accuracy_score(y_true, y_pred)
     macro_precision = precision_score(y_true, y_pred, average='macro')
     macro_recall = recall_score(y_true, y_pred, average='macro')
@@ -54,6 +60,7 @@ def correct_predictions(output_probabilities, targets):
     _, out_classes = output_probabilities.max(dim=1)
     correct = (out_classes == targets).sum()
     return correct.item()
+
 
 def train(model, dataloader, optimizer, epoch_number, max_gradient_norm):
     """
@@ -99,6 +106,7 @@ def train(model, dataloader, optimizer, epoch_number, max_gradient_norm):
     epoch_accuracy = correct_preds / len(dataloader.dataset)
     return epoch_time, epoch_loss, epoch_accuracy
     
+    
 def validate(model, dataloader):
     """
     Compute the loss and accuracy of a model on some validation dataset.
@@ -106,14 +114,12 @@ def validate(model, dataloader):
         model: A torch module for which the loss and accuracy must be
             computed.
         dataloader: A DataLoader object to iterate over the validation data.
-        criterion: A loss criterion to use for computing the loss.
-        epoch: The number of the epoch for which validation is performed.
-        device: The device on which the model is located.
     Returns:
         epoch_time: The total time to compute the loss and accuracy on the
             entire validation set.
         epoch_loss: The loss computed on the entire validation set.
         epoch_accuracy: The accuracy computed on the entire validation set.
+        predictions: The predicted labels by the model.
     """
     # Switch to evaluate mode.
     model.eval()
@@ -140,6 +146,7 @@ def validate(model, dataloader):
     epoch_accuracy = running_accuracy / (len(dataloader.dataset))
     return epoch_time, epoch_loss, epoch_accuracy, predictions
 
+
 def test(model, dataloader):
     """
     Test the accuracy of a model on some labelled test dataset.
@@ -150,7 +157,7 @@ def test(model, dataloader):
         batch_time: The average time to predict the classes of a batch.
         total_time: The total time to process the whole dataset.
         accuracy: The accuracy of the model on the input data.
-        all_prob: 预测为1类的概率，numpy数组
+        predictions: The predicted labels by the model.
     """
     # Switch the model to eval mode.
     model.eval()
