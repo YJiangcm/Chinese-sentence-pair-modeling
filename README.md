@@ -24,10 +24,10 @@ The following table shows the test accuracy (%) of different models on 5 dataset
 
 |          Model          | LCQMC | ChineseSTS | BQ Corpus | OCNLI | CMNLI |
 |:-----------------------:|:-----:|:----------:|:---------:|:-----:|:-----:|
-|  BiLSTM (Max)-char-pre  |  74.4 |    97.5    |    70.0   |  60.6 |  56.7 |
-|  BiLSTM (Max)-word-pre  |  75.2 |    98.0    |    68.0   |  58.0 |  56.9 |
-| BiLSTM (Atten)-char-pre |  85.0 |    96.8    |    79.8   |  58.5 |  63.6 |
-| BiLSTM (Atten)-word-pre |  83.7 |    94.4    |    79.3   |  57.8 |  64.2 |
+|  BiLSTM (max-pooling)-char-pre  |  74.4 |    97.5    |    70.0   |  60.6 |  56.7 |
+|  BiLSTM (max-pooling)-word-pre  |  75.2 |    98.0    |    68.0   |  58.0 |  56.9 |
+| BiLSTM (self-attention)-char-pre |  85.0 |    96.8    |    79.8   |  58.5 |  63.6 |
+| BiLSTM (self-attention)-word-pre |  83.7 |    94.4    |    79.3   |  57.8 |  64.2 |
 |      ABCNN-char-pre     |  79.5 |    97.2    |    78.8   |  53.2 |  63.2 |
 |      ABCNN-word-pre     |  81.3 |    97.9    |    74.4   |  54.1 |  59.8 |
 |       RE2-char-pre      |  84.2 |    98.7    |    80.4   |  61.0 |  68.6 |
