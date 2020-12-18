@@ -71,4 +71,4 @@ Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attent
 
 
 ## LICENSE
-These codes are mainly inspired by https://github.com/zhaogaofeng611/TextMatch. As for this repository, please refer to [MIT License Copyright (c) 2020 YJiangcm](https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/LICENSE).
+These codes are mainly inspired by https://github.com/zhaogaofeng611/TextMatch. As for this repository, please refer to [Apache-2.0 License Copyright (c) 2020 YJiangcm](https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/LICENSE).
