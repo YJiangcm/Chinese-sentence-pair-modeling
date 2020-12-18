@@ -52,7 +52,7 @@ Note that the y_axis is the averaged accuracy on 5 different test sets. We can s
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/accuracy.png" width="600" height="450">
 Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attention), ABCNN, RE2, ESIM and BiMPM, and the accuracy is computed by taking average on 5 datasets. We can see that RoBERTa model gets the best performance among these models, and BERT-wwm is slightly better than BERT.
 
-### 3.3 Comprehensive Evaluation of the Models
+### 3.3 Comprehensive Evaluation of the Models (The original papers can be accessed by clicking the hyperlinks)
 
 |          Model          | Accuracy\(%) | Number of parameters  (millions) | Average training time  (seconds / sentence pair)  | Average inference time  (seconds / sentence pair) |
 |:-----------------------:|:------------:|:-------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|
