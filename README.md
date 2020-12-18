@@ -54,7 +54,7 @@ Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attent
 
 ### 3.3 Comprehensive Evaluation of the Models 
 
-ps: (The original papers can be accessed by clicking the hyperlinks)
+(ps: The original papers can be accessed by clicking the hyperlinks)
 
 |          Model          | Accuracy\(%) | Number of parameters  (millions) | Average training time  (seconds / sentence pair)  | Average inference time  (seconds / sentence pair) |
 |:-----------------------:|:------------:|:-------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|
