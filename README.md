@@ -22,26 +22,26 @@ As for Siamese BERT, BERT, BERT-wwm, RoBERTa, XLNet DistilBERT and ALBERT, learn
 The following table shows the test accuracy (%) of different models on 5 datasets:
 
 
-|          Model          | LCQMC | ChineseSTS | BQ Corpus | OCNLI | CMNLI |
-|:-----------------------:|:-----:|:----------:|:---------:|:-----:|:-----:|
-|  BiLSTM (max-pooling)-char-pre  |  74.4 |    97.5    |    70.0   |  60.6 |  56.7 |
-|  BiLSTM (max-pooling)-word-pre  |  75.2 |    98.0    |    68.0   |  58.0 |  56.9 |
-| BiLSTM (self-attention)-char-pre |  85.0 |    96.8    |    79.8   |  58.5 |  63.6 |
-| BiLSTM (self-attention)-word-pre |  83.7 |    94.4    |    79.3   |  57.8 |  64.2 |
-|      ABCNN-char-pre     |  79.5 |    97.2    |    78.8   |  53.2 |  63.2 |
-|      ABCNN-word-pre     |  81.3 |    97.9    |    74.4   |  54.1 |  59.8 |
-|       RE2-char-pre      |  84.2 |    98.7    |    80.4   |  61.0 |  68.6 |
-|       RE2-word-pre      |  84.5 |    98.6    |    80.1   |  57.2 |  65.1 |
-|      ESIM-char-pre      |  83.6 |    99.0    |    81.2   |  64.8 |  74.0 |
-|      ESIM-word-pre      |   84  |    98.9    |    81.7   |  61.3 |  72.6 |
-|      BiMPM-char-pre     |  83.6 |    98.9    |    79.2   |  63.9 |  69.7 |
-|      BiMPM-word-pre     |  83.7 |    98.8    |    80.3   |  59.9 |  69.6 |
-|       Siamese BERT      |  84.8 |    97.7    |    83.5   |  66.8 |  72.5 |
-|           BERT          |  **87.8** |    98.9    |    84.2   |  73.8 |  80.5 |
-|         BERT-wwm        |  87.4 |    99.2    |    84.5   |  73.8 |  80.6 |
-|         RoBERTa         |  87.5 |    99.2    |    **84.6**   |  **75.5** |  80.6 |
-|          XLNet          |  87.4 |    99.1    |    84.1   |  73.6 |  **80.7** |
-|          ALBERT         |  87.4 |    **99.5**    |    82.2   |  68.1 |  74.8 |
+|          Model          | LCQMC | ChineseSTS | BQ Corpus | OCNLI | CMNLI | Avg. |
+|:-----------------------:|:-----:|:----------:|:---------:|:-----:|:-----:|:-----:|
+|  BiLSTM (max-pooling)-char-pre  |  74.4 |    97.5    |    70.0   |  60.6 |  56.7 | 71.8 |
+|  BiLSTM (max-pooling)-word-pre  |  75.2 |    98.0    |    68.0   |  58.0 |  56.9 | 71.2 |
+| BiLSTM (self-attention)-char-pre |  85.0 |    96.8    |    79.8   |  58.5 |  63.6 | 76.7 |
+| BiLSTM (self-attention)-word-pre |  83.7 |    94.4    |    79.3   |  57.8 |  64.2 | 75.9 |
+|      ABCNN-char-pre     |  79.5 |    97.2    |    78.8   |  53.2 |  63.2 | 74.4 |
+|      ABCNN-word-pre     |  81.3 |    97.9    |    74.4   |  54.1 |  59.8 | 73.5 |
+|       RE2-char-pre      |  84.2 |    98.7    |    80.4   |  61.0 |  68.6 | 78.6 |
+|       RE2-word-pre      |  84.5 |    98.6    |    80.1   |  57.2 |  65.1 | 77.1 |
+|      ESIM-char-pre      |  83.6 |    99.0    |    81.2   |  64.8 |  74.0 | 80.5 |
+|      ESIM-word-pre      |   84  |    98.9    |    81.7   |  61.3 |  72.6 | 79.7 |
+|      BiMPM-char-pre     |  83.6 |    98.9    |    79.2   |  63.9 |  69.7 | 79.1 |
+|      BiMPM-word-pre     |  83.7 |    98.8    |    80.3   |  59.9 |  69.6 | 78.5 |
+|       Siamese BERT      |  84.8 |    97.7    |    83.5   |  66.8 |  72.5 | 81.1 |
+|           BERT          |  **87.8** |    98.9    |    84.2   |  73.8 |  80.5 | 85.0 |
+|         BERT-wwm        |  87.4 |    99.2    |    84.5   |  73.8 |  80.6 | 85.1 |
+|         RoBERTa         |  87.5 |    99.2    |    **84.6**   |  **75.5** |  80.6 | **85.5** |
+|          XLNet          |  87.4 |    99.1    |    84.1   |  73.6 |  **80.7** | 85.0 |
+|          ALBERT         |  87.4 |    **99.5**    |    82.2   |  68.1 |  74.8 | 82.4 |
 
 ### 3.1 Char Embedding vs. Word Embedding
 <img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/char_vs_word.png" width="600" height="450">
