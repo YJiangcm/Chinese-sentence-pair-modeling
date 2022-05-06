@@ -5,7 +5,7 @@ This repository contains the following models for sentence pair modeling: **BiLS
 ## 1. Datasets
 I conduct experiments on 5 Chinese datasets: 3 paraphrase identification datasets and 2 natural language inference datasets. Tables below give a brief comparison of these datasets.
 
-<img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/datasets.PNG" width="600" height="450">
+<img src="https://github.com/YJiangcm/Chinese-sentence-pair-modeling/blob/master/photos/datasets.PNG" width="700" height="550">
 
 **Note**: the BQ Corpus dataset requires you to send an application form, which can be downloaded from http://icrc.hitsz.edu.cn/Article/show/175.html .
 The CMNLI dataset is too large, and you can download it from https://storage.googleapis.com/cluebenchmark/tasks/cmnli_public.zip . Due to the unbalanced categories (labels of 1, 2, 3, 4 account for a smallpercentage) of ChineseSTS, I drop these few labels and converts the dataset into an binary classification task. What's more, OCNLI and CMNLI datasets are preprocessed by removing the data with missing labels.
