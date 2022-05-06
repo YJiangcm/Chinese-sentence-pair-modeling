@@ -56,20 +56,20 @@ Here character embedding is chosen for BiLSTM (max-pooling), BiLSTM (self-attent
 
 (P.S. the original papers can be accessed by clicking the hyperlinks)
 
-|          Model          | Accuracy\(%) | Number of parameters  (millions) | Average training time  (seconds / sentence pair)  | Average inference time  (seconds / sentence pair) |
+|          Model          | Accuracy\(%) | Number of parameters  (millions) | Average training speed  (sentence pairs / second)  | Average inference speed  (sentence pairs / second) |
 |:-----------------------:|:------------:|:-------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|
-|   [BiLSTM (max-pooling)](https://arxiv.org/pdf/1705.02364.pdf)  |     71.8     |                16               |                      7.4E-04                      |                      1.6E-04                      |
-| [BiLSTM (self-attention)](https://arxiv.org/pdf/1705.02364.pdf) |     76.7     |                16               |                      7.5E-04                      |                      1.7E-04                      |
-|       [Siamese BERT](https://arxiv.org/pdf/1908.10084.pdf)      |     81.1     |               102               |                      1.5E-02                      |                      3.9E-03                      |
-|          [ABCNN](https://arxiv.org/pdf/1512.05193.pdf)          |     74.4     |                13               |                      **4.8E-04**                      |                      1.3E-04                      |
-|           [RE2](https://arxiv.org/pdf/1908.00300.pdf)           |     78.6     |                16               |                      8.1E-04                      |                      2.1E-04                      |
-|           [ESIM](https://arxiv.org/pdf/1609.06038.pdf)          |     80.5     |                17               |                      5.5E-04                      |                      **1.2E-04**                      |
-|          [BiMPM](https://arxiv.org/pdf/1702.03814.pdf)          |     79.1     |                13               |                      2.0E-03                      |                      9.1E-04                      |
-|           [BERT](https://arxiv.org/pdf/1810.04805.pdf)         |     85.0     |               102               |                      6.7E-03                      |                      2.1E-03                      |
-|         [BERT-wwm](https://arxiv.org/pdf/1906.08101.pdf)        |     85.1     |               102               |                      6.8E-03                      |                      2.1E-03                      |
-|         [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf)         |     **85.5**     |               102               |                      1.1E-02                      |                      3.7E-03                      |
-|          [XLNet](https://arxiv.org/pdf/1906.08237.pdf)          |     85.0     |               117               |                      9.5E-03                      |                      3.6E-03                      |
-|          [ALBERT](https://arxiv.org/pdf/1909.11942.pdf)         |     82.4     |                **12**               |                      1.1E-02                      |                      3.7E-03                      |
+|   [BiLSTM (max-pooling)](https://arxiv.org/pdf/1705.02364.pdf)  |     71.8     |                16               |                      1,351 |                      6,250                      |
+| [BiLSTM (self-attention)](https://arxiv.org/pdf/1705.02364.pdf) |     76.7     |                16               |                      1,333                      |                      5,882                   |
+|       [Siamese BERT](https://arxiv.org/pdf/1908.10084.pdf)      |     81.1     |               102               |                      67                      |                      256                      |
+|          [ABCNN](https://arxiv.org/pdf/1512.05193.pdf)          |     74.4     |                13               |                      **2,083**                      |                      7,692                      |
+|           [RE2](https://arxiv.org/pdf/1908.00300.pdf)           |     78.6     |                16               |                      1,235                      |                      4,762                      |
+|           [ESIM](https://arxiv.org/pdf/1609.06038.pdf)          |     80.5     |                17               |                      1,818                      |                      **8,333**                      |
+|          [BiMPM](https://arxiv.org/pdf/1702.03814.pdf)          |     79.1     |                13               |                      500                      |                      1,099                      |
+|           [BERT](https://arxiv.org/pdf/1810.04805.pdf)         |     85.0     |               102               |                      149                      |                      476                      |
+|         [BERT-wwm](https://arxiv.org/pdf/1906.08101.pdf)        |     85.1     |               102               |                      147                      |                      476                      |
+|         [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf)         |     **85.5**     |               102               |                      91                      |                      270                      |
+|          [XLNet](https://arxiv.org/pdf/1906.08237.pdf)          |     85.0     |               117               |                      105                     |                      278                      |
+|          [ALBERT](https://arxiv.org/pdf/1909.11942.pdf)         |     82.4     |                **12**               |                      91                      |                      270                      |
 
 
 ## LICENSE
